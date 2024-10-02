@@ -1,0 +1,64 @@
+Author: Thomas Olson - olsoto@iastate.edu
+Project: COM S 3270 Part 1 A - Point Cloud Data Processing
+
+double minHeight, maxHeight- these variables store the minimum and maximum 
+height values encountered in the point cloud data.
+
+double minCoords[2], maxCoords[2]- arrays to hold the x and y coordinates 
+associated with the minimum and maximum height points.
+
+double totalHeight- This variable accumulates the sum of all heights to 
+calculate the average height.
+
+int count- This variable counts the number of data points taken from the input 
+file.
+
+pointcloud.h
+This file should contain necessary function declarations and other 
+structures used across multiple source files. However, my implementation does 
+not actively use anything from it.
+
+pointcloud.c (main source file)
+Contains the main logic for reading point cloud data and calculating the
+minimum, maximum, and average heights
+
+stat1(FILE *file):
+Description:
+Processes the input point cloud data, which consists of x, y, and height 
+values. This function iterates through the data, updating the minimum and 
+maximum height values along with their respective coordinates. It also 
+calculates the average height of all points
+
+Inputs:
+FILE *file: A pointer to the input file containing point cloud data. The file 
+must be in the format of double values of x, y, and height
+
+Outputs:
+Prints the minimum height with its coordinates, maximum height with its
+coordinates, and the average height of all points.
+
+Logic:
+Iterates through each line in the file using fscanf to read x, y, and height 
+values. Compares each height with the current minimum and maximum, updating 
+them when necessary. Calculates the total height of all points to compute the 
+average after all points are processed.
+
+
+int main(int argc, char *argv[]):
+Description:
+Manages command-line input from the user. 
+
+Inputs:
+argc: Number of command-line arguments.
+argv: An array of strings representing the command-line arguments. argv[1] is 
+expected to be the name of the input file.
+
+Outputs:
+If no file is provided, prints instructions on how to use program.
+If the file cannot be opened, prints an error message.
+Calls stat1 to process the point cloud data from the file.
+
+Logic:
+Ensures the correct number of arguments are provided. Attempts to open the file
+in read mode. If successful, passes the file to stat1 for processing. Closes 
+the file after processing.
